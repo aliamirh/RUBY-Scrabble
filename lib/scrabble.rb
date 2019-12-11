@@ -31,7 +31,9 @@ class Letters
   def open_and_score(file)
     file = File.open(file).read.chomp
     @letter_array = file.upcase.split('').keep_if { |c| c =~ /[A-Z]/ }
-    self.scrabble_score()
+    result = self.scrabble_score()
+    File.write("./result.txt", result)
+    result
   end
 
 end
